@@ -1,6 +1,6 @@
 {
-  "name": "Next.js na Prática",
-  "short_name": "Next.js",
+  "name": "My Trips",
+  "short_name": "My Trips",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -15,6 +15,7 @@
   ],
   "theme_color": "#06092B",
   "background_color": "#06092B",
+  "description": "A simple project to show my favorite spots in the world.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"
