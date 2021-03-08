@@ -1,5 +1,10 @@
 function Main() {
-  return <div>Next.js na prática</div>
+  return (
+    <div>
+      <p>Next.js na prática</p>
+      <a href="#">link</a>
+    </div>
+  )
 }
 
 export default Main
