@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { CloseOutline } from '@styled-icons/evaicons-outline'
 import LinkWrapper from 'components/LinkWrapper'
 import { Place } from 'graphql/generated/graphql'
@@ -22,7 +23,15 @@ function PlaceTemplate({ place }: PlaceTemplateProps) {
 
           <Styled.Gallery>
             {place.gallery.map((item) => (
-              <img key={item.url} src={item.url} alt={place.name} />
+              <Image
+                width={1000}
+                height={600}
+                quality={75}
+                objectFit="cover"
+                key={item.url}
+                src={item.url}
+                alt={place.name}
+              />
             ))}
           </Styled.Gallery>
         </Styled.Container>
