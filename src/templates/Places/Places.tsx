@@ -1,4 +1,7 @@
+import { CloseOutline } from '@styled-icons/evaicons-outline'
+import LinkWrapper from 'components/LinkWrapper'
 import { Place } from 'graphql/generated/graphql'
+import * as Styled from './styles'
 
 export type PlaceTemplateProps = {
   place: Place
@@ -7,14 +10,23 @@ export type PlaceTemplateProps = {
 function PlaceTemplate({ place }: PlaceTemplateProps) {
   return (
     <>
-      <h1>{place.name}</h1>
-      <div
-        dangerouslySetInnerHTML={{ __html: place.description?.html || '' }}
-      />
+      <LinkWrapper href="/">
+        <CloseOutline size={32} aria-label="Go back to map" />
+      </LinkWrapper>
+      <Styled.Wrapper>
+        <Styled.Container>
+          <Styled.Heading>{place.name}</Styled.Heading>
+          <Styled.Body
+            dangerouslySetInnerHTML={{ __html: place.description?.html || '' }}
+          />
 
-      {place.gallery.map((item) => (
-        <img key={item.id} src={item.url} alt={place.name} />
-      ))}
+          <Styled.Gallery>
+            {place.gallery.map((item) => (
+              <img key={item.url} src={item.url} alt={place.name} />
+            ))}
+          </Styled.Gallery>
+        </Styled.Container>
+      </Styled.Wrapper>
     </>
   )
 }
