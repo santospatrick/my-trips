@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import NProgress from 'next-nprogress/component'
 import GlobalStyles from 'styles/global'
 
 function App({ Component, pageProps }: AppProps) {
@@ -24,6 +25,7 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
+      <NProgress color="white" />
       <Component {...pageProps} />
     </React.Fragment>
   )
