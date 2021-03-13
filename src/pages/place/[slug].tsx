@@ -1,7 +1,7 @@
 import { graphQLClient } from 'graphql/client'
 import { GetPlaceBySlugQuery, GetPlacesQuery } from 'graphql/generated/graphql'
 import { GET_PLACES, GET_PLACE_BY_SLUG } from 'graphql/queries'
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import PlaceTemplate, { PlaceTemplateProps } from 'templates/Places'
 
@@ -13,7 +13,7 @@ function Place({ place }: PlaceTemplateProps) {
   return <PlaceTemplate place={place} />
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { places } = await graphQLClient.request<GetPlacesQuery>(GET_PLACES, {
     first: 3,
   })
