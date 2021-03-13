@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import { MapConsumer, MapContainer, Marker, TileLayer } from 'react-leaflet'
 import * as Styled from './styles'
 
 type Place = {
@@ -50,6 +50,20 @@ function Map({ places = [] }: MapProps) {
         style={{ height: '100%', width: '100%' }}
         minZoom={3}
       >
+        <MapConsumer>
+          {(map) => {
+            const width =
+              window.innerWidth ||
+              document.documentElement.clientWidth ||
+              document.body.clientWidth
+
+            if (width < 768) {
+              map.setMinZoom(2)
+            }
+
+            return null
+          }}
+        </MapConsumer>
         <CustomTileLayer />
         {places.map((place) => (
           <Marker
