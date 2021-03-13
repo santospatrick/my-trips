@@ -12,6 +12,7 @@ export const getStaticProps = async () => {
   const { places } = await graphQLClient.request<GetPlacesQuery>(GET_PLACES)
 
   return {
+    revalidate: 60,
     props: {
       places,
     },
